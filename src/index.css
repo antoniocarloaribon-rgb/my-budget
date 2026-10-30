@@ -1,0 +1,61 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-text-size-adjust: 100%;
+}
+
+html,
+body {
+  background: #ffffff;
+  color: #0a0a0a;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Inter', 'Segoe UI', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overscroll-behavior-y: none;
+}
+
+button {
+  -webkit-user-select: none;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+input {
+  font-size: 16px; /* stops iPhone zooming into inputs */
+}
+
+input[type='date'] {
+  -webkit-appearance: none;
+  appearance: none;
+  display: flex;
+  align-items: center;
+}
+
+@layer components {
+  .label {
+    @apply text-[11px] font-semibold uppercase tracking-[0.12em] text-mute;
+  }
+  .num {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+.bar-over {
+  background-image: repeating-linear-gradient(135deg, #0a0a0a 0 4px, #6b6b6b 4px 8px);
+}
+
+@keyframes fade {
+  from { opacity: 0; }
+}
+@keyframes up {
+  from { transform: translateY(24px); opacity: 0; }
+}
+.animate-fade { animation: fade 0.18s ease-out; }
+.animate-up { animation: up 0.24s cubic-bezier(0.2, 0.8, 0.2, 1); }
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade, .animate-up { animation: none; }
+}
